@@ -1,7 +1,7 @@
 vim-emoji
 =========
 
-Named Emoji in Vim. Emojis are only available on terminal Vim on Mac.
+Emoji in Vim. Emojis are only available on terminal Vim on Mac.
 
 Extracted from
 [vim-github-dashboard](https://github.com/junegunn/vim-github-dashboard).
@@ -41,7 +41,7 @@ List of functions
 Examples
 --------
 
-### Using Emojis as GitGutter symbols
+### Using Emojis as [Git Gutter](https://github.com/airblade/vim-gitgutter) symbols
 
 ```vim
 " In .vimrc
