@@ -17,12 +17,17 @@ Installation
 [plugin](https://github.com/Shougo/neobundle.vim)
 [manager](https://github.com/MarcWeber/vim-addon-manager).
 
+- [Pathogen](https://github.com/tpope/vim-pathogen)
+  - `git clone https://github.com/junegunn/vim-emoji.git ~/.vim/bundle/vim-emoji`
 - [Vundle](https://github.com/gmarik/vundle)
-  - `Bundle 'junegunn/vim-emoji'`
+  1. Add `Bundle 'junegunn/vim-emoji'` to .vimrc
+  2. `:BundleInstall`
 - [NeoBundle](https://github.com/Shougo/neobundle.vim)
-  - `NeoBundle 'junegunn/vim-emoji'`
+  1. Add `NeoBundle 'junegunn/vim-emoji'` to .vimrc
+  2. `:NeoBundleInstall`
 - [vim-plug](https://github.com/junegunn/vim-plug)
-  - `Plug 'junegunn/vim-emoji'`
+  1. Add `Plug 'junegunn/vim-emoji'` to .vimrc
+  2. `:PlugInstall`
 
 List of functions
 -----------------
