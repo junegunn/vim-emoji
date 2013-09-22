@@ -21,13 +21,13 @@ Installation
   - `git clone https://github.com/junegunn/vim-emoji.git ~/.vim/bundle/vim-emoji`
 - [Vundle](https://github.com/gmarik/vundle)
   1. Add `Bundle 'junegunn/vim-emoji'` to .vimrc
-  2. `:BundleInstall`
+  2. Run `:BundleInstall`
 - [NeoBundle](https://github.com/Shougo/neobundle.vim)
   1. Add `NeoBundle 'junegunn/vim-emoji'` to .vimrc
-  2. `:NeoBundleInstall`
+  2. Run `:NeoBundleInstall`
 - [vim-plug](https://github.com/junegunn/vim-plug)
   1. Add `Plug 'junegunn/vim-emoji'` to .vimrc
-  2. `:PlugInstall`
+  2. Run `:PlugInstall`
 
 List of functions
 -----------------
