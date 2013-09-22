@@ -3,12 +3,12 @@ if exists("g:loaded_vim_emoji")
 endif
 let g:loaded_vim_emoji = 1
 
-let s:is_mac = !has('gui_running') &&
+let s:available = !has('gui_running') &&
 \ (has('mac') || has('macunix') ||
 \  (executable('uname') &&
 \   index(['Darwin', 'Mac'], substitute(system('uname'), '\n', '', '')) != -1))
 
-if s:is_mac
+if s:available
   let s:emoji_code = {
     \ "+1": [0x1f44d],
     \ "-1": [0x1f44e],
@@ -893,7 +893,7 @@ else
 endif
 
 function! emoji#available()
-  return s:is_mac
+  return s:available
 endfunction
 
 function! emoji#list()
@@ -902,10 +902,12 @@ endfunction
 
 function! emoji#for(name, ...)
   let emoji = get(s:emoji_code, tolower(a:name), [])
-  if empty(emoji) | return '' | endif
+  if empty(emoji)
+    return a:0 > 0 ? a:1 : ''
+  endif
 
   let echar = join(map(copy(emoji), 'nr2char(v:val)'), '')
-  if a:0 == 0 || a:1
+  if a:0 < 2 || a:2
     return echar . repeat(' ', 2 - s:strwidth(echar))
   else
     return echar

@@ -33,9 +33,8 @@ List of functions
 -----------------
 
 - `emoji#available()`
-- `emoji#for(name[, pad = 1])`
+- `emoji#for(name[, default = '', pad = 1])`
   - Refer to [Emoji cheat sheet](http://www.emoji-cheat-sheet.com)
-  - Returns an empty string if not available
 - `emoji#list()`
 
 Examples
