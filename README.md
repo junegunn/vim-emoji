@@ -67,7 +67,7 @@ function! s:replace_emojis() range
   for lnum in range(a:firstline, a:lastline)
     let line = getline(lnum)
     let subs = substitute(line,
-          \ '\(:\([^:]\+\):\)', '\=emoji#for(submatch(2), submatch(1))', 'g')
+          \ ':\([^:]\+\):', '\=emoji#for(submatch(1), submatch(0))', 'g')
     if line != subs
       call setline(lnum, subs)
     endif
