@@ -7,6 +7,10 @@ Execute (emoji#available()):
 Execute (emoji#for(NAME)):
   AssertEqual '🐶 ', emoji#for('dog')
 
+Execute (emoji#for(NAME) - case-insensitivity):
+  AssertEqual '🐶 ', emoji#for('DOG')
+  AssertEqual '🐶 ', emoji#for('Dog')
+
 Execute (emoji#for(NAME, DEFAULT = '')):
   AssertEqual '',   emoji#for('snoop dogg')
   AssertEqual '💩 ', emoji#for('snoop dogg', '💩 ')
