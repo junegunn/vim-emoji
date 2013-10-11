@@ -29,7 +29,19 @@ Do (Insert emoji using <C-R>=):
   iHi, \<C-R>=emoji#for('dog')\<Enter>!\<Esc>
   yy2p
 
+Expect (3 dogs):
+  Hi, 🐶 !
+  Hi, 🐶 !
+  Hi, 🐶 !
+
+Given (Text with emoji names):
+  :cat:s and :dog:s
+  :frog:s and :leprechaun:s
+
+Execute (Substitute emoji names):
+  %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
+
 Expect:
-  Hi, 🐶 !
-  Hi, 🐶 !
-  Hi, 🐶 !
+  🐱 s and 🐶 s
+  🐸 s and :leprechaun:s
+
