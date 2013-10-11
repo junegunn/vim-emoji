@@ -63,15 +63,6 @@ endfor
 ### Replace `:emoji_name:` into Emojis
 
 ```vim
-function! s:replace_emojis() range
-  for lnum in range(a:firstline, a:lastline)
-    let line = getline(lnum)
-    let subs = substitute(line,
-          \ ':\([^:]\+\):', '\=emoji#for(submatch(1), submatch(0))', 'g')
-    if line != subs
-      call setline(lnum, subs)
-    endif
-  endfor
-endfunction
-command! -range ReplaceEmojis <line1>,<line2>call s:replace_emojis()
+%s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
 ```
+
