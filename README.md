@@ -6,7 +6,7 @@ Emoji in Vim. Emojis are only available on terminal Vim on Mac.
 Extracted from
 [vim-github-dashboard](https://github.com/junegunn/vim-github-dashboard).
 
-![](https://raw.github.com/junegunn/vim-emoji/png/emoji-sign.png)
+![](https://raw.github.com/junegunn/i/master/emoji-sign.png)
 
 Installation
 ------------
