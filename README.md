@@ -36,6 +36,7 @@ List of functions
 - `emoji#for(name[, default = '', pad = 1])`
   - Refer to [Emoji cheat sheet](http://www.emoji-cheat-sheet.com)
 - `emoji#list()`
+- `emoji#complete(findstart, base)`
 
 Examples
 --------
@@ -59,6 +60,14 @@ for e in emoji#list()
   call append(line('$'), printf('%s (%s)', emoji#for(e), e))
 endfor
 ```
+
+### Emoji completion
+
+```vim
+set completefunc=emoji#complete
+```
+
+![](https://raw.github.com/junegunn/i/master/emoji-complete.gif)
 
 ### Replace `:emoji_name:` into Emojis
 

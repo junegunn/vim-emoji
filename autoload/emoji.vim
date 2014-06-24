@@ -51,3 +51,25 @@ else
   endfunction
 endif
 
+function! emoji#complete(findstart, base)
+  if !exists('s:emoji_names')
+    let s:emoji_names = sort(map(emoji#list(), '":".v:val.":"'))
+  endif
+
+  if a:findstart
+    let prefix = match(getline('.')[0:col('.') - 1], ':[^:]\{-}$')
+    return prefix
+  elseif empty(a:base)
+    return []
+  else
+    redraw!
+    let matches = []
+    for name in s:emoji_names
+      if stridx(name, a:base) >= 0
+        call add(matches, { 'word': name, 'kind': emoji#for(name[1:-2]) })
+      endif
+    endfor
+    return matches
+  endif
+endfunction
+

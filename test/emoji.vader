@@ -45,3 +45,16 @@ Expect:
   🐱 s and 🐶 s
   🐸 s and :leprechaun:s
 
+Given (Nothing):
+
+Execute (Set completefunc):
+  setlocal completefunc=emoji#complete
+  setlocal completeopt=menu
+
+Do (Complete!):
+  iapp\<C-X>\<C-U>\<CR>
+  :app\<C-X>\<C-U>
+
+Expect (Completed):
+  app
+  :apple:
