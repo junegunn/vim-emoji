@@ -1,5 +1,4 @@
-if emoji#available()
-  let s:emoji_code = {
+let s:emoji_code = {
     \ '+1': 0x1f44d,
     \ '-1': 0x1f44e,
     \ '100': 0x1f4af,
@@ -867,10 +866,7 @@ if emoji#available()
     \ 'zap': 0x26a1,
     \ 'zero': 0x0030,
     \ 'zzz': 0x1f4a4
-  \ }
-else
-  let s:emoji_code = {}
-endif
+\ }
 
 function! emoji#data#dict()
   return s:emoji_code

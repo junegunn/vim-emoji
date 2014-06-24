@@ -52,8 +52,11 @@ else
 endif
 
 function! emoji#complete(findstart, base)
-  if !exists('s:emoji_names')
-    let s:emoji_names = sort(map(emoji#list(), '":".v:val.":"'))
+  if !exists('s:emojis')
+    let s:emojis = map(sort(keys(emoji#data#dict())),
+          \ emoji#available() ?
+          \ '{ "word": ":".v:val.":", "kind": emoji#for(v:val) }' :
+          \ '{ "word": ":".v:val.":" }')
   endif
 
   if a:findstart
@@ -64,9 +67,9 @@ function! emoji#complete(findstart, base)
   else
     redraw!
     let matches = []
-    for name in s:emoji_names
-      if stridx(name, a:base) >= 0
-        call add(matches, { 'word': name, 'kind': emoji#for(name[1:-2]) })
+    for emoji in s:emojis
+      if stridx(emoji.word, a:base) >= 0
+        call add(matches, emoji)
       endif
     endfor
     return matches
