@@ -70,6 +70,14 @@ function! emoji#complete(findstart, base)
         call add(matches, emoji)
       endif
     endfor
+    augroup emoji_complete
+      autocmd!
+      autocmd CursorMoved,CursorMovedI,InsertLeave * redraw!
+            \| augroup emoji_complete
+            \|   execute 'autocmd!'
+            \| augroup END
+            \| augroup! emoji_complete
+    augroup END
     return matches
   endif
 endfunction
