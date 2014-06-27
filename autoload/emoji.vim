@@ -60,8 +60,7 @@ function! emoji#complete(findstart, base)
   endif
 
   if a:findstart
-    let prefix = match(getline('.')[0:col('.') - 1], ':[^:]\{-}$')
-    return prefix
+    return match(getline('.')[0:col('.') - 1], ':[^:]\{-}$')
   elseif empty(a:base)
     return []
   else
