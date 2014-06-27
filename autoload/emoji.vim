@@ -65,7 +65,6 @@ function! emoji#complete(findstart, base)
   elseif empty(a:base)
     return []
   else
-    redraw!
     let matches = []
     for emoji in s:emojis
       if stridx(emoji.word, a:base) >= 0
