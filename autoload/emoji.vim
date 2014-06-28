@@ -60,7 +60,7 @@ function! emoji#complete(findstart, base)
   endif
 
   if a:findstart
-    return match(getline('.')[0:col('.') - 1], ':[^:]\{-}$')
+    return match(getline('.')[0:col('.') - 1], ':[^: \t]*$')
   elseif empty(a:base)
     return []
   else
@@ -70,13 +70,13 @@ function! emoji#complete(findstart, base)
         call add(matches, emoji)
       endif
     endfor
-    augroup emoji_complete
+    augroup emoji_complete_redraw
       autocmd!
       autocmd CursorMoved,CursorMovedI,InsertLeave * redraw!
-            \| augroup emoji_complete
+            \| augroup emoji_complete_redraw
             \|   execute 'autocmd!'
             \| augroup END
-            \| augroup! emoji_complete
+            \| augroup! emoji_complete_redraw
     augroup END
     return matches
   endif
