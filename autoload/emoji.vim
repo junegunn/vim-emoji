@@ -64,12 +64,6 @@ function! emoji#complete(findstart, base)
   elseif empty(a:base)
     return []
   else
-    let matches = []
-    for emoji in s:emojis
-      if stridx(emoji.word, a:base) >= 0
-        call add(matches, emoji)
-      endif
-    endfor
     augroup emoji_complete_redraw
       autocmd!
       autocmd CursorMoved,CursorMovedI,InsertLeave * redraw!
@@ -78,7 +72,7 @@ function! emoji#complete(findstart, base)
             \| augroup END
             \| augroup! emoji_complete_redraw
     augroup END
-    return matches
+    return filter(copy(s:emojis), 'stridx(v:val.word, a:base) >= 0')
   endif
 endfunction
 
