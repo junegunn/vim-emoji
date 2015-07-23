@@ -85,7 +85,7 @@ function! emoji#complete(findstart, base)
   if a:findstart
     return match(getline('.')[0:col('.') - 1], ':[^: \t]*$')
   elseif empty(a:base)
-    return []
+    return s:emojis
   else
     augroup emoji_complete_redraw
       autocmd!
