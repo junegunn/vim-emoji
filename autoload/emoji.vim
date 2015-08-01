@@ -66,8 +66,9 @@ else
 
     let echar = type(emoji) == 0 ? nr2char(emoji) :
           \ join(map(copy(emoji), 'nr2char(v:val)'), '')
-    if a:0 < 2 || a:2
-      return echar . repeat(' ', 2 - s:strwidth(echar))
+    let pad = get(a:, 2, 1)
+    if pad
+      return echar . repeat(' ', 1 + pad - s:strwidth(echar))
     else
       return echar
     endif
