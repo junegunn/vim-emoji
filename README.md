@@ -1,7 +1,7 @@
 vim-emoji
 =========
 
-Emoji in Vim. Emojis are only available on terminal Vim on Mac.
+Emoji in Vim. Emojis are only available on OS X.
 
 Extracted from
 [vim-github-dashboard](https://github.com/junegunn/vim-github-dashboard).
@@ -11,23 +11,11 @@ Extracted from
 Installation
 ------------
 
-[Use](https://github.com/tpope/vim-pathogen)
-[your](https://github.com/gmarik/vundle)
-[favorite](https://github.com/junegunn/vim-plug)
-[plugin](https://github.com/Shougo/neobundle.vim)
-[manager](https://github.com/MarcWeber/vim-addon-manager).
+Using [vim-plug](https://github.com/junegunn/vim-plug):
 
-- [Pathogen](https://github.com/tpope/vim-pathogen)
-  - `git clone https://github.com/junegunn/vim-emoji.git ~/.vim/bundle/vim-emoji`
-- [Vundle](https://github.com/gmarik/vundle)
-  1. Add `Bundle 'junegunn/vim-emoji'` to .vimrc
-  2. Run `:BundleInstall`
-- [NeoBundle](https://github.com/Shougo/neobundle.vim)
-  1. Add `NeoBundle 'junegunn/vim-emoji'` to .vimrc
-  2. Run `:NeoBundleInstall`
-- [vim-plug](https://github.com/junegunn/vim-plug)
-  1. Add `Plug 'junegunn/vim-emoji'` to .vimrc
-  2. Run `:PlugInstall`
+```vim
+Plug 'junegunn/vim-emoji'
+```
 
 List of functions
 -----------------

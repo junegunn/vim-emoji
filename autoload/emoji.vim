@@ -26,10 +26,9 @@ if exists("g:loaded_vim_emoji")
 endif
 let g:loaded_vim_emoji = 1
 
-let s:available = !has('gui_running') &&
-\ (has('mac') || has('macunix') ||
-\  (executable('uname') &&
-\   index(['Darwin', 'Mac'], substitute(system('uname'), '\n', '', '')) != -1))
+let s:available = has('mac') || has('macunix') ||
+      \ (executable('uname') &&
+      \  index(['Darwin', 'Mac'], substitute(system('uname'), '\n', '', '')) != -1)
 
 if exists("*strwidth")
   function! s:strwidth(str)
