@@ -36,7 +36,7 @@ if exists("*strwidth")
   endfunction
 else
   function! s:strwidth(str)
-    return len(split(a:str, 's'))
+    return len(split(a:str, '\zs'))
   endfunction
 endif
 
