@@ -1,23 +1,19 @@
 # Test cases for vim-emoji
 
-Execute (emoji#available()):
-  " TODO what if not available?
-  Assert emoji#available()
-
 Execute (emoji#for(NAME)):
-  AssertEqual '🐶 ', emoji#for('dog')
+  AssertEqual '🐶', emoji#for('dog')
 
 Execute (emoji#for(NAME) - case-insensitivity):
-  AssertEqual '🐶 ', emoji#for('DOG')
-  AssertEqual '🐶 ', emoji#for('Dog')
+  AssertEqual '🐶', emoji#for('DOG')
+  AssertEqual '🐶', emoji#for('Dog')
 
 Execute (emoji#for(NAME, DEFAULT = '')):
   AssertEqual '',   emoji#for('snoop dogg')
   AssertEqual '💩 ', emoji#for('snoop dogg', '💩 ')
 
 Execute (emoji#for(NAME, DEFAULT, PAD = 1)):
-  AssertEqual '🐱 ', emoji#for('cat', '🐶 ')
-  AssertEqual '🐱 ', emoji#for('cat', '🐶 ', 1)
+  AssertEqual '🐱', emoji#for('cat', '🐶 ')
+  AssertEqual '🐱', emoji#for('cat', '🐶 ', 1)
   AssertEqual '🐱',  emoji#for('cat', '🐶 ', 0)
 
 Execute (emoji#list()):
@@ -30,9 +26,9 @@ Do (Insert emoji using <C-R>=):
   yy2p
 
 Expect (3 dogs):
-  Hi, 🐶 !
-  Hi, 🐶 !
-  Hi, 🐶 !
+  Hi, 🐶!
+  Hi, 🐶!
+  Hi, 🐶!
 
 Given (Text with emoji names):
   :cat:s and :dog:s
@@ -42,8 +38,8 @@ Execute (Substitute emoji names):
   %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
 
 Expect:
-  🐱 s and 🐶 s
-  🐸 s and :leprechaun:s
+  🐱s and 🐶s
+  🐸s and :leprechaun:s
 
 Given (Nothing):
 
@@ -56,5 +52,5 @@ Do (Complete!):
   :app\<C-X>\<C-U>
 
 Expect (Completed):
-  app
+  app:+1:
   :apple:

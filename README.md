@@ -1,7 +1,7 @@
 vim-emoji
 =========
 
-Emoji in Vim. Emojis are only available on OS X.
+Emoji in Vim.
 
 Extracted from
 [vim-github-dashboard](https://github.com/junegunn/vim-github-dashboard).
@@ -20,7 +20,6 @@ Plug 'junegunn/vim-emoji'
 List of functions
 -----------------
 
-- `emoji#available()`
 - `emoji#for(name[, default = '', pad = 1])`
   - Refer to [Emoji cheat sheet](http://www.emoji-cheat-sheet.com)
 - `emoji#list()`
@@ -32,13 +31,10 @@ Examples
 ### Using Emojis as [Git Gutter](https://github.com/airblade/vim-gitgutter) symbols
 
 ```vim
-" In .vimrc
-silent! if emoji#available()
-  let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-  let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-  let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-  let g:gitgutter_sign_modified_removed = emoji#for('collision')
-endif
+let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+let g:gitgutter_sign_modified_removed = emoji#for('collision')
 ```
 
 ### Append Emoji list to current buffer

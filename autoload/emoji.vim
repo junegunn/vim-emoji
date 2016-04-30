@@ -26,10 +26,6 @@ if exists("g:loaded_vim_emoji")
 endif
 let g:loaded_vim_emoji = 1
 
-let s:available = has('mac') || has('macunix') ||
-      \ (executable('uname') &&
-      \  index(['Darwin', 'Mac'], substitute(system('uname'), '\n', '', '')) != -1)
-
 if exists("*strwidth")
   function! s:strwidth(str)
     return strwidth(a:str)
@@ -40,39 +36,30 @@ else
   endfunction
 endif
 
+" Deprecated
 function! emoji#available()
-  return s:available
+  return 1
 endfunction
 
-if !s:available
-  function! emoji#list()
-    return []
-  endfunction
+function! emoji#list()
+  return keys(emoji#data#dict())
+endfunction
 
-  function! emoji#for(name, ...)
-    return a:0 > 0 ? a:1 : ''
-  endfunction
-else
-  function! emoji#list()
-    return keys(emoji#data#dict())
-  endfunction
+function! emoji#for(name, ...)
+  let emoji = get(emoji#data#dict(), tolower(a:name), '')
+  if empty(emoji)
+    return a:0 > 0 ? a:1 : emoji
+  endif
 
-  function! emoji#for(name, ...)
-    let emoji = get(emoji#data#dict(), tolower(a:name), '')
-    if empty(emoji)
-      return a:0 > 0 ? a:1 : emoji
-    endif
-
-    let echar = type(emoji) == 0 ? nr2char(emoji) :
-          \ join(map(copy(emoji), 'nr2char(v:val)'), '')
-    let pad = get(a:, 2, 1)
-    if pad
-      return echar . repeat(' ', 1 + pad - s:strwidth(echar))
-    else
-      return echar
-    endif
-  endfunction
-endif
+  let echar = type(emoji) == 0 ? nr2char(emoji) :
+        \ join(map(copy(emoji), 'nr2char(v:val)'), '')
+  let pad = get(a:, 2, 1)
+  if pad
+    return echar . repeat(' ', 1 + pad - s:strwidth(echar))
+  else
+    return echar
+  endif
+endfunction
 
 function! emoji#complete(findstart, base)
   if !exists('s:emojis')
