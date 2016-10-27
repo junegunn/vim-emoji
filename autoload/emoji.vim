@@ -82,7 +82,7 @@ function! emoji#complete(findstart, base)
             \| augroup END
             \| augroup! emoji_complete_redraw
     augroup END
-    return filter(copy(s:emojis), 'stridx(v:val.word, a:base) >= 0')
+    return filter(copy(s:emojis), 'stridx(v:val.word, a:base[1:]) >= 0')
   endif
 endfunction
 
