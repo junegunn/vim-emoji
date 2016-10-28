@@ -61,6 +61,15 @@ function! emoji#for(name, ...)
   endif
 endfunction
 
+let s:max_score = 1000
+function! s:score(haystack, needle)
+  let idx = stridx(a:haystack, a:needle)
+  if idx < 0  | return idx             | endif
+  if idx == 0 | return s:max_score * 2 | endif
+  let bonus = (a:haystack[idx - 1] =~ '[^0-9a-zA-Z]') * s:max_score
+  return bonus + s:max_score - idx
+endfunction
+
 function! emoji#complete(findstart, base)
   if !exists('s:emojis')
     let s:emojis = map(sort(keys(emoji#data#dict())),
@@ -82,7 +91,17 @@ function! emoji#complete(findstart, base)
             \| augroup END
             \| augroup! emoji_complete_redraw
     augroup END
-    return filter(copy(s:emojis), 'stridx(v:val.word, a:base) >= 0')
+
+    let matches = filter(map(copy(s:emojis), '[s:score(v:val.word, a:base[1:]), v:val]'), 'v:val[0] >= 0')
+    function! EmojiSort(t1, t2)
+      if a:t1[0] == a:t2[0]
+        return a:t1[1].word <= a:t2[1].word ? -1 : 1
+      endif
+      return a:t1[0] >= a:t2[0] ? -1 : 1
+    endfunction
+    let matches = sort(matches, 'EmojiSort')
+    delfunction EmojiSort
+    return map(matches, 'v:val[1]')
   endif
 endfunction
 
