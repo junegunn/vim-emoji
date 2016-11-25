@@ -59,3 +59,9 @@ set completefunc=emoji#complete
 %s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g
 ```
 
+You can define a shortcut (such as <kbd>Leader</kbd> <kbd>e</kbd> 
+<kbd>m</kbd>) to quickly replace codes by Emoji in the current line:
+
+```vim
+nmap <Leader>em :s/:\([^:]\+\):/\=emoji#for(submatch(1), submatch(0))/g<CR>:noh<CR>
+```
