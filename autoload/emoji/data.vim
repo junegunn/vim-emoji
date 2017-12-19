@@ -232,6 +232,7 @@ let s:emoji_code = {
     \ 'couplekiss': 0x1f48f,
     \ 'cow': 0x1f42e,
     \ 'cow2': 0x1f404,
+    \ 'crab': 0x1f980,
     \ 'credit_card': 0x1f4b3,
     \ 'crescent_moon': 0x1f319,
     \ 'crocodile': 0x1f40a,
