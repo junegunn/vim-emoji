@@ -17,6 +17,17 @@ Using [vim-plug](https://github.com/junegunn/vim-plug):
 Plug 'junegunn/vim-emoji'
 ```
 
+Customization
+-------------
+
+Want to bring your own emoji list? Just define `g:emoji_code`
+
+```vim
+let g:emoji_codes = {
+  \ 'airplane': [0x2708, 0xfe0f]
+}
+```
+
 List of functions
 -----------------
 

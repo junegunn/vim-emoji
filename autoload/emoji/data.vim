@@ -1617,6 +1617,6 @@ let s:emoji_code = {
 \ }
 
 function! emoji#data#dict()
-  return s:emoji_code
+  return get(g:, 'emoji_code', s:emoji_code)
 endfunction
 
