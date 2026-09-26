@@ -54,3 +54,12 @@ Do (Complete!):
 Expect (Completed):
   app:+1:
   :apple:
+
+Execute (Preserve an existing EmojiSort function):
+  function! EmojiSort(...) abort
+    return 42
+  endfunction
+  call emoji#complete(0, ':do')
+  AssertEqual 1, exists('*EmojiSort')
+  AssertEqual 42, EmojiSort([], [])
+  delfunction EmojiSort

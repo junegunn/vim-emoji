@@ -70,6 +70,13 @@ function! s:score(haystack, needle)
   return bonus + s:max_score - idx
 endfunction
 
+function! s:EmojiSort(t1, t2)
+  if a:t1[0] == a:t2[0]
+    return a:t1[1].word <= a:t2[1].word ? -1 : 1
+  endif
+  return a:t1[0] >= a:t2[0] ? -1 : 1
+endfunction
+
 function! emoji#complete(findstart, base)
   if !exists('s:emojis')
     let s:emojis = map(sort(keys(emoji#data#dict())),
@@ -93,14 +100,7 @@ function! emoji#complete(findstart, base)
     augroup END
 
     let matches = filter(map(copy(s:emojis), '[s:score(v:val.word, a:base[1:]), v:val]'), 'v:val[0] >= 0')
-    function! EmojiSort(t1, t2)
-      if a:t1[0] == a:t2[0]
-        return a:t1[1].word <= a:t2[1].word ? -1 : 1
-      endif
-      return a:t1[0] >= a:t2[0] ? -1 : 1
-    endfunction
-    let matches = sort(matches, 'EmojiSort')
-    delfunction EmojiSort
+    let matches = sort(matches, function('s:EmojiSort'))
     return map(matches, 'v:val[1]')
   endif
 endfunction
